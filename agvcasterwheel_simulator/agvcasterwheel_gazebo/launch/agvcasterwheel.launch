@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<launch>
+
+	<arg name="robot_ns" />
+	<arg name="world_path" default="$(find agvcasterwheel_gazebo)/worlds/factory.world"/>
+
+	<include file="$(find agvcasterwheel_gazebo)/launch/agv1.launch">
+		<arg name="robot_ns" value="agv1"/>	
+		<arg name="x" value="3.30"/>
+		<arg name="y" value="2.5"/>
+		<arg name="yaw" value="1.57"/>
+	</include>
+
+
+	<include file="$(find agvcasterwheel_gazebo)/launch/agv2.launch">
+		<arg name="robot_ns" value="agv2"/>	
+		<arg name="x" value="0.5"/>
+		<arg name="y" value="-8"/>
+		<arg name="yaw" value="-3.14"/>
+	</include>
+
+	<include file="$(find agvcasterwheel_gazebo)/launch/agv3.launch">
+		<arg name="robot_ns" value="agv3"/>	
+		<arg name="x" value="-3.4"/>
+		<arg name="y" value="2.5"/>
+		<arg name="yaw" value="1.57"/>
+	</include>
+
+
+	<include file="$(find agvcasterwheel_gazebo)/launch/start_gazebo.launch" >
+		<arg name="world_path" value="$(arg world_path)"/>
+	</include>
+
+</launch>
+

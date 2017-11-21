@@ -1,0 +1,1638 @@
+<?xml version="1.0">
+<robot name="agvcasterwheel2">
+	<!--BASE-->
+	<link name="baseOfCasterWheel_link">	
+			<collision>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<geometry>
+					<box size="1 0.6 0.2"/> 
+				</geometry>
+			</collision>
+			<visual>
+				<origin xyz="0 0 0" rpy="0 0 0" />  
+				<geometry>
+					<box size="1 0.6 0.2"/> 
+				</geometry>
+			</visual>
+			<inertial>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<mass value="10.0"/>
+				<inertia
+					ixx="1.0" ixy="0" ixz="0"
+					iyy="1.0" iyz="0"
+					izz="1.0"/>
+			</inertial>
+		</link>
+<!--		<link name="baseTireWheel_link">
+			<collision>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<geometry>
+					<box size="0.2 0.3 0.1"/> 
+				</geometry>
+			</collision>
+			<visual>
+				<origin xyz="0 0 0" rpy="0 0 0" />  
+				<geometry>
+					<box size="0.2 0.3 0.1"/> 
+				</geometry>
+			</visual>
+			<inertial>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<mass value="5.0"/>
+				<inertia
+					ixx="1.0" ixy="0" ixz="0"
+					iyy="1.0" iyz="0"
+					izz="1.0"/>
+			</inertial>		
+		</link>
+		<joint name="baseToBase_joint" type="fixed">
+			<origin xyz="0 0 -0.889"/>
+			<child link="baseTireWheel_link"/>
+			<parent link="baseOfCasterWheel_link"/>
+			<axis xyz="0 1 0"/>
+		</joint>-->
+		<link name="rightWheel_link">
+			<collision>
+				<origin xyz="0 0 0" rpy="1.57075 0 0"/>
+				<geometry>
+					<cylinder radius="0.07" length="0.02"/> 
+				</geometry>
+			</collision>
+			<visual>
+				<origin xyz="0 0 0" rpy="0 0 1.57" />  
+				<geometry>
+					<mesh filename="model://agvcasterwheel_description/meshes/rim.dae" scale="0.8 0.8 0.8"/>
+				</geometry>
+			</visual>
+			<inertial>
+				<origin rpy="1.57075 0 0" xyz="0 0 0"/>
+				<mass value="0.85"/>
+				<inertia
+					ixx="0.001" ixy="0" ixz="0"
+					iyy="0.001" iyz="0"
+					izz="0.001"/>
+			</inertial>			
+		</link>
+		<joint name="rightWheel_joint" type="continuous">
+			<origin xyz="0 -0.20 -0.086"/>
+			<parent link="baseOfCasterWheel_link"/>
+			<child link="rightWheel_link"/>
+			<axis xyz="0 1 0"/>
+		</joint>		
+		<gazebo reference="rightWheel_link">
+			<material>Gazebo/Grey</material>
+			<mu1>1.0</mu1>
+			<mu2>1.0</mu2>
+			<kp>1000000.0</kp>
+			<kd>100.0</kd>
+			<minDepth>0.001</minDepth>
+			<maxVel>1.0</maxVel>		
+		</gazebo>		
+		<link name="rightWheelTire_link">
+			<collision>
+				<origin xyz="0 0 0" rpy="1.57075 0 0"/>
+				<geometry>
+					<cylinder length="0.001" radius="0.001"/>
+				</geometry>
+			</collision>
+			<visual>
+				<origin xyz="0 0 0" rpy="0 0 1.57" />  
+				<geometry>
+					<mesh filename="model://agvcasterwheel_description/meshes/tire.dae" scale="0.8 0.8 0.8"/>
+				</geometry>
+			</visual>
+			<inertial>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<mass value="0.001"/>
+				<inertia
+					ixx="0.001" ixy="0" ixz="0"
+					iyy="0.001" iyz="0"
+					izz="0.001"/>
+			</inertial>		
+		</link>
+		<joint name="rightWheelTire_joint" type="fixed">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<child link="rightWheelTire_link"/>
+			<parent link="rightWheel_link"/>
+			<axis xyz="0 1 0"/>
+		</joint>		
+		<gazebo reference="rightWheelTire_link">
+			<material>Gazebo/Black</material>
+		</gazebo>
+		<link name="leftWheel_link">
+			<collision>
+				<origin xyz="0 0 0" rpy="1.57075 0 0"/>
+				<geometry>
+					<cylinder radius="0.07" length="0.02"/> 
+				</geometry>
+			</collision>
+			<visual>
+				<origin xyz="0 0 0" rpy="0 0 1.57" />  
+				<geometry>
+					<mesh filename="model://agvcasterwheel_description/meshes/rim.dae" scale="0.8 0.8 0.8"/>
+				</geometry>
+			</visual>
+			<inertial>
+				<origin rpy="1.57075 0 0" xyz="0 0 0"/>
+				<mass value="0.85"/>
+				<inertia
+					ixx="0.001" ixy="0" ixz="0"
+					iyy="0.001" iyz="0"
+					izz="0.001"/>
+			</inertial>			
+		</link>
+		<joint name="leftWheel_joint" type="continuous">
+			<origin xyz="0 0.20 -0.086"/>
+			<parent link="baseOfCasterWheel_link"/>
+			<child link="leftWheel_link"/>
+			<axis xyz="0 1 0"/>
+		</joint>		
+		<gazebo reference="">
+			<material>Gazebo/Grey</material>
+		</gazebo>
+		<gazebo reference="leftWheel_link">
+			<material>Gazebo/Grey</material>
+			<mu1>1.0</mu1>
+			<mu2>1.0</mu2>
+			<kp>1000000.0</kp>
+			<kd>100.0</kd>
+			<minDepth>0.001</minDepth>
+			<maxVel>1.0</maxVel>		
+		</gazebo>		
+		<link name="leftWheelTire_link">
+			<collision>
+				<origin xyz="0 0 0" rpy="1.57075 0 0"/>
+				<geometry>
+					<cylinder length="0.001" radius="0.001"/>
+				</geometry>
+			</collision>
+			<visual>
+				<origin xyz="0 0 0" rpy="0 0 1.57" />  
+				<geometry>
+					<mesh filename="model://agvcasterwheel_description/meshes/tire.dae" scale="0.8 0.8 0.8"/>
+				</geometry>
+			</visual>
+			<inertial>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<mass value="0.001"/>
+				<inertia
+					ixx="0.001" ixy="0" ixz="0"
+					iyy="0.001" iyz="0"
+					izz="0.001"/>
+			</inertial>			
+		</link>
+		<joint name="leftWheelTire_joint" type="continuous">
+			<origin xyz="0 0 0"/>
+			<child link="leftWheelTire_link"/>
+			<parent link="leftWheel_link"/>
+			<axis xyz="0 1 0"/>
+		</joint>				
+		<gazebo reference="leftWheelTire_link">
+			<material>Gazebo/Black</material>
+		</gazebo>		
+	
+		<link name="rightBackCaster_link">
+			<collision>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<geometry>
+					<box size="0.05 0.05 0.05"/>
+				</geometry>
+			</collision>
+			<visual>
+				<origin xyz="0 0 0" rpy="3.14 0 0" />  				
+				<geometry>
+					<mesh filename="model://agvcasterwheel_description/meshes/caster_base.dae" scale="1 1 1"/>
+				</geometry>
+			</visual>
+			<inertial>
+				<origin rpy="0 0 0" xyz="0 0 0"/>
+				<mass value="0.01"/>
+				<inertia
+					ixx="0.000001" ixy="0" ixz="0"
+					iyy="0.000001" iyz="0"
+					izz="0.000001"/>
+			</inertial>				
+		</link>
+		<joint name="rightBackCaster_joint" type="fixed">
+			<origin xyz="-0.47 -0.23 -0.1" rpy="0 0 0"/>
+			<parent link="baseOfCasterWheel_link"/>
+			<child link="rightBackCaster_link"/>
+			<axis xyz="0 0 0"/>
+		</joint>
+		<gazebo reference="rightBackCaster_link">
+			<material>Gazebo/Grey</material>
+			<mu1>0.0</mu1>
+			<mu2>0.0</mu2>
+			<kp>1000000.0</kp>
+			<kd>100.0</kd>
+			<minDepth>0.001</minDepth>
+			<maxVel>1.0</maxVel>			
+		</gazebo>			
+		<link name="rightBackCasterRotate_link">
+			<collision>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<geometry>
+					<cylinder length="0.023" radius="0.0215"/>
+				</geometry>
+			</collision>
+			<visual>
+				<origin xyz="0 0 0" rpy="3.14 0 0" />  				
+				<geometry>
+					<mesh filename="model://agvcasterwheel_description/meshes/caster_rot.dae" scale="1 1 1"/>
+				</geometry>
+			</visual>
+			<inertial>
+				<origin rpy="0 0 0" xyz="0 0 0"/>
+				<mass value="0.01"/>
+				<inertia
+					ixx="0.001" ixy="0" ixz="0"
+					iyy="0.001" iyz="0"
+					izz="0.001"/>
+			</inertial>				
+		</link>	
+		<joint name="rightBackCasterRotate_joint" type="continuous">
+			<origin xyz="0.005 0.01 -0.015"/>
+			<child link="rightBackCasterRotate_link"/>
+			<parent link="rightBackCaster_link"/>
+			<axis xyz="0 0 1"/>
+		</joint>
+		<gazebo reference="rightBackCasterRotate_link">
+			<material>Gazebo/Grey</material>
+			<mu1>0.0</mu1>
+			<mu2>0.0</mu2>
+			<kp>1000000.0</kp>
+			<kd>100.0</kd>
+			<minDepth>0.001</minDepth>
+			<maxVel>1.0</maxVel>				
+		</gazebo>
+		<link name="rightBackCasterWheel_link">
+			<collision>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<geometry>
+					<sphere radius="0.016"/>
+				</geometry>
+			</collision>
+			<visual>
+				<origin xyz="0 0 0" rpy="3.14 0 0" />  				
+				<geometry>
+					<sphere radius="0.016"/>
+				</geometry>
+			</visual>
+			<inertial>
+				<origin rpy="0 0 0" xyz="0 0 0"/>
+				<mass value="0.001"/>
+				<inertia
+					ixx="0.001" ixy="0" ixz="0"
+					iyy="0.001" iyz="0"
+					izz="0.001"/>
+			</inertial>				
+		</link>	
+		<joint name="rightBackCasterWheel_joint" type="continuous">
+			<origin xyz="0 0.015 -0.025"/>
+			<parent link="rightBackCasterRotate_link"/>
+			<child link="rightBackCasterWheel_link"/>
+			<axis xyz="0.577350269 0.577350269 0.577350269"/>
+		</joint>
+		<gazebo reference="rightBackCasterWheel_link">
+			<material>Gazebo/Yellow</material>
+			<mu1>0.0</mu1>
+			<mu2>0.0</mu2>
+			<kp>1000000.0</kp>
+			<kd>100.0</kd>
+			<minDepth>0.001</minDepth>
+			<maxVel>1.0</maxVel>		
+		</gazebo>		
+		<link name="leftBackCaster_link">
+			<collision>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<geometry>
+					<box size="0.05 0.05 0.05"/>
+				</geometry>
+			</collision>
+			<visual>
+				<origin xyz="0 0 0" rpy="3.14 0 0" />  				
+				<geometry>
+					<mesh filename="model://agvcasterwheel_description/meshes/caster_base.dae" scale="1 1 1"/>
+				</geometry>
+			</visual>
+			<inertial>
+				<origin rpy="0 0 0" xyz="0 0 0"/>
+				<mass value="0.01"/>
+				<inertia
+					ixx="0.000001" ixy="0" ixz="0"
+					iyy="0.000001" iyz="0"
+					izz="0.000001"/>
+			</inertial>			
+		</link>
+		<joint name="leftBackCaster_joint" type="fixed">
+			<origin xyz="-0.47 0.23 -0.1"/>
+			<parent link="baseOfCasterWheel_link"/>
+			<child link="leftBackCaster_link"/>
+			<axis xyz="0 0 0"/>
+		</joint>
+		<gazebo reference="leftBackCaster_link">
+			<material>Gazebo/Grey</material>
+			<mu1>0.0</mu1>
+			<mu2>0.0</mu2>
+			<kp>1000000.0</kp>
+			<kd>100.0</kd>
+			<minDepth>0.001</minDepth>
+			<maxVel>1.0</maxVel>			
+		</gazebo>	
+		<link name="leftBackCasterRotate_link">
+			<collision>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<geometry>
+					<cylinder length="0.023" radius="0.0215"/>
+				</geometry>
+			</collision>
+			<visual>
+				<origin xyz="0 0 0" rpy="3.14 0 0" />  				
+				<geometry>
+					<mesh filename="model://agvcasterwheel_description/meshes/caster_rot.dae" scale="1 1 1"/>
+				</geometry>
+			</visual>
+			<inertial>
+				<origin rpy="0 0 0" xyz="0 0 0"/>
+				<mass value="0.01"/>
+				<inertia
+					ixx="0.001" ixy="0" ixz="0"
+					iyy="0.001" iyz="0"
+					izz="0.001"/>
+			</inertial>				
+		</link>	
+		<joint name="leftBackCasterRotate_joint" type="continuous">
+			<origin xyz="0.005 0.01 -0.015"/>
+			<child link="leftBackCasterRotate_link"/>
+			<parent link="leftBackCaster_link"/>
+			<axis xyz="0 0 1"/>
+		</joint>		
+		<gazebo reference="leftBackCasterRotate_link">
+			<material>Gazebo/Grey</material>
+			<mu1>0.0</mu1>
+			<mu2>0.0</mu2>
+			<kp>1000000.0</kp>
+			<kd>100.0</kd>
+			<minDepth>0.001</minDepth>
+			<maxVel>1.0</maxVel>
+		</gazebo>
+		<link name="leftBackCasterWheel_link">
+			<collision>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<geometry>
+					<sphere radius="0.016"/>
+				</geometry>
+			</collision>
+			<visual>
+				<origin xyz="0 0 0" rpy="3.14 0 0" />  				
+				<geometry>
+					<sphere radius="0.016"/>
+				</geometry>
+			</visual>
+			<inertial>
+				<origin rpy="0 0 0" xyz="0 0 0"/>
+				<mass value="0.001"/>
+				<inertia
+					ixx="0.001" ixy="0" ixz="0"
+					iyy="0.001" iyz="0"
+					izz="0.001"/>
+			</inertial>				
+		</link>	
+		<joint name="leftBackCasterWheel_joint" type="continuous">
+			<origin xyz="0 0.015 -0.025"/>
+			<parent link="leftBackCasterRotate_link"/>
+			<child link="leftBackCasterWheel_link"/>
+			<axis xyz="0.577350269 0.577350269 0.577350269"/>
+		</joint>		
+		<gazebo reference="leftBackCasterWheel_link">
+			<material>Gazebo/Yellow</material>
+			<mu1>0.0</mu1>
+			<mu2>0.0</mu2>
+			<kp>1000000.0</kp>
+			<kd>100.0</kd>
+			<minDepth>0.001</minDepth>
+			<maxVel>1.0</maxVel>		
+		</gazebo>
+		<link name="rightFrontCaster_link">
+			<collision>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<geometry>
+					<box size="0.05 0.05 0.05"/>
+				</geometry>
+			</collision>
+			<visual>
+				<origin xyz="0 0 0" rpy="3.14 0 0" />  				
+				<geometry>
+					<mesh filename="model://agvcasterwheel_description/meshes/caster_base.dae" scale="1 1 1"/>
+				</geometry>
+			</visual>
+			<inertial>
+				<origin rpy="0 0 0" xyz="0 0 0"/>
+				<mass value="0.01"/>
+				<inertia
+					ixx="0.000001" ixy="0" ixz="0"
+					iyy="0.000001" iyz="0"
+					izz="0.000001"/>
+			</inertial>					
+		</link>
+		<joint name="rightFrontCaster_joint" type="fixed">
+			<origin xyz="0.46 -0.25 -0.1"/>
+			<parent link="baseOfCasterWheel_link"/>
+			<child link="rightFrontCaster_link"/>
+			<axis xyz="0 0 0"/>
+		</joint>
+		<gazebo reference="rightFrontCaster_link">
+			<material>Gazebo/Grey</material>
+			<mu1>0.0</mu1>
+			<mu2>0.0</mu2>
+			<kp>1000000.0</kp>
+			<kd>100.0</kd>
+			<minDepth>0.001</minDepth>
+			<maxVel>1.0</maxVel>			
+		</gazebo>	
+		<link name="rightFrontCasterRotate_link">
+			<collision>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<geometry>
+					<cylinder length="0.023" radius="0.0215"/>
+				</geometry>
+			</collision>
+			<visual>
+				<origin xyz="0 0 0" rpy="3.14 0 0" />  				
+				<geometry>
+					<mesh filename="model://agvcasterwheel_description/meshes/caster_rot.dae" scale="1 1 1"/>
+				</geometry>
+			</visual>
+			<inertial>
+				<origin rpy="0 0 0" xyz="0 0 0"/>
+				<mass value="0.01"/>
+				<inertia
+					ixx="0.001" ixy="0" ixz="0"
+					iyy="0.001" iyz="0"
+					izz="0.001"/>
+			</inertial>				
+		</link>	
+		<joint name="rightFrontCasterRotate_joint" type="continuous">
+			<origin xyz="0.005 0.01 -0.015"/>
+			<child link="rightFrontCasterRotate_link"/>
+			<parent link="rightFrontCaster_link"/>
+			<axis xyz="0 0 1"/>
+		</joint>					
+		<gazebo reference="rightFrontCasterRotate_link">
+			<material>Gazebo/Grey</material>
+			<mu1>0.0</mu1>
+			<mu2>0.0</mu2>
+			<kp>1000000.0</kp>
+			<kd>100.0</kd>
+			<minDepth>0.001</minDepth>
+			<maxVel>1.0</maxVel>				
+		</gazebo>		
+		<link name="rightFrontCasterWheel_link">
+			<collision>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<geometry>
+					<sphere radius="0.016"/>
+				</geometry>
+			</collision>
+			<visual>
+				<origin xyz="0 0 0" rpy="3.14 0 0" />  				
+				<geometry>
+					<sphere radius="0.016"/>
+				</geometry>
+			</visual>
+			<inertial>
+				<origin rpy="0 0 0" xyz="0 0 0"/>
+				<mass value="0.001"/>
+				<inertia
+					ixx="0.001" ixy="0" ixz="0"
+					iyy="0.001" iyz="0"
+					izz="0.001"/>
+			</inertial>				
+		</link>	
+		<joint name="rightFrontCasterWheel_joint" type="continuous">
+			<origin xyz="0 0.015 -0.025"/>
+			<parent link="rightFrontCasterRotate_link"/>
+			<child link="rightFrontCasterWheel_link"/>
+			<axis xyz="0.577350269 0.577350269 0.577350269"/>
+		</joint>		
+		<gazebo reference="rightFrontCasterWheel_link">
+			<material>Gazebo/Yellow</material>
+			<mu1>0.0</mu1>
+			<mu2>0.0</mu2>
+			<kp>1000000.0</kp>
+			<kd>100.0</kd>
+			<minDepth>0.001</minDepth>
+			<maxVel>1.0</maxVel>		
+		</gazebo>			
+		<link name="leftFrontCaster_link">
+			<collision>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<geometry>
+					<box size="0.05 0.05 0.05"/>
+				</geometry>
+			</collision>
+			<visual>
+				<origin xyz="0 0 0" rpy="3.14 0 0" />  				
+				<geometry>
+					<mesh filename="model://agvcasterwheel_description/meshes/caster_base.dae" scale="1 1 1"/>
+				</geometry>
+			</visual>
+			<inertial>
+				<origin rpy="0 0 0" xyz="0 0 0"/>
+				<mass value="0.01"/>
+				<inertia
+					ixx="0.000001" ixy="0" ixz="0"
+					iyy="0.000001" iyz="0"
+					izz="0.000001"/>
+			</inertial>					
+		</link>
+		<joint name="leftFrontCaster_joint" type="fixed">
+			<origin xyz="0.46 0.23 -0.1"/>
+			<parent link="baseOfCasterWheel_link"/>
+			<child link="leftFrontCaster_link"/>
+			<axis xyz="0 0 0"/>
+		</joint>
+		<gazebo reference="leftFrontCaster_link">
+			<material>Gazebo/Grey</material>
+			<mu1>0.0</mu1>
+			<mu2>0.0</mu2>
+			<kp>1000000.0</kp>
+			<kd>100.0</kd>
+			<minDepth>0.001</minDepth>
+			<maxVel>1.0</maxVel>			
+		</gazebo>	
+		<link name="leftFrontCasterRotate_link">
+			<collision>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<geometry>
+					<cylinder length="0.023" radius="0.0215"/>
+				</geometry>
+			</collision>
+			<visual>
+				<origin xyz="0 0 0" rpy="3.14 0 0" />  				
+				<geometry>
+					<mesh filename="model://agvcasterwheel_description/meshes/caster_rot.dae" scale="1 1 1"/>
+				</geometry>
+			</visual>
+			<inertial>
+				<origin rpy="0 0 0" xyz="0 0 0"/>
+				<mass value="0.01"/>
+				<inertia
+					ixx="0.001" ixy="0" ixz="0"
+					iyy="0.001" iyz="0"
+					izz="0.001"/>
+			</inertial>				
+		</link>	
+		<joint name="leftFrontCasterRotate_joint" type="continuous">
+			<origin xyz="0.005 0.01 -0.015"/>
+			<child link="leftFrontCasterRotate_link"/>
+			<parent link="leftFrontCaster_link"/>
+			<axis xyz="0 0 1"/>
+		</joint>		
+		<gazebo reference="leftFrontCasterRotate_link">
+			<material>Gazebo/Grey</material>
+			<mu1>0.0</mu1>
+			<mu2>0.0</mu2>
+			<kp>1000000.0</kp>
+			<kd>100.0</kd>
+			<minDepth>0.001</minDepth>
+			<maxVel>1.0</maxVel>
+		</gazebo>		
+		<link name="leftFrontCasterWheel_link">
+			<collision>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<geometry>
+					<sphere radius="0.016"/>
+				</geometry>
+			</collision>
+			<visual>
+				<origin xyz="0 0 0" rpy="3.14 0 0" />  				
+				<geometry>
+					<sphere radius="0.016"/>
+				</geometry>
+			</visual>
+			<inertial>
+				<origin rpy="0 0 0" xyz="0 0 0"/>
+				<mass value="0.001"/>
+				<inertia
+					ixx="0.001" ixy="0" ixz="0"
+					iyy="0.001" iyz="0"
+					izz="0.001"/>
+			</inertial>				
+		</link>	
+		<joint name="leftFrontCasterWheel_joint" type="continuous">
+			<origin xyz="0 0.015 -0.025"/>
+			<parent link="leftFrontCasterRotate_link"/>
+			<child link="leftFrontCasterWheel_link"/>
+			<axis xyz="0.577350269 0.577350269 0.577350269"/>
+		</joint>			
+		<gazebo reference="leftFrontCasterWheel_link">
+			<material>Gazebo/Yellow</material>
+			<mu1>0.0</mu1>
+			<mu2>0.0</mu2>
+			<kp>1000000.0</kp>
+			<kd>100.0</kd>
+			<minDepth>0.001</minDepth>
+			<maxVel>1.0</maxVel>		
+		</gazebo>		
+
+		<!-- Hokuyo Laser -->
+		<link name="hokuyo1_link">
+			<collision>
+		    	    <origin xyz="0 0 0" rpy="0 0 0"/>
+		    	    <geometry>
+					<box size="0.1 0.1 0.1"/>
+			    </geometry>
+		        </collision>
+			<visual>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<geometry>
+					<mesh filename="model://hokuyo/meshes/hokuyo.dae"/>
+			        </geometry>
+			</visual>
+			<inertial>
+				<mass value="1e-5" />
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+			</inertial>
+		</link>	
+		<joint name="hokuyo1_joint" type="fixed">
+    			<axis xyz="0 1 0" />
+    			<origin xyz="0.46 0.265 0.1" rpy="0 0 0.78539816339"/>
+    			<parent link="baseOfCasterWheel_link"/>
+    			<child link="hokuyo1_link"/>
+  		</joint>
+		<!-- hokuyo -->
+		<gazebo reference="hokuyo1_link">
+			<sensor type="gpu_ray" name="head_hokuyo_sensor">
+				<pose>0 0 0 0 0 0</pose>
+				<visualize>false</visualize>
+				<update_rate>40</update_rate>
+				<ray>
+			       		<scan>
+			       		 	<horizontal>
+						  	<samples>720</samples>
+						        <resolution>1</resolution>
+						        <min_angle>-1.570796</min_angle>
+							<max_angle>1.570796</max_angle>
+			       		 	</horizontal>
+			       	 	</scan>
+	        			<range>
+        	  				<min>0.10</min>
+        	  				<max>30.0</max>
+        	  				<resolution>0.01</resolution>
+        				</range>
+        				<noise>
+        	  				<type>gaussian</type>
+        	  				<!-- Noise parameters based on published spec for Hokuyo laser
+        	    				     achieving "+-30mm" accuracy at range < 10m.  A mean of 0.0m and
+        	      				     stddev of 0.01m will put 99.7% of samples within 0.03m of the true
+        	      				     reading. -->
+        	  				<mean>0.0</mean>
+        	  				<stddev>0.01</stddev>
+        				</noise>
+      				</ray>
+      				<plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_gpu_laser.so">
+        				<topicName>laser/scan1</topicName>
+        				<frameName>hokuyo1_link</frameName>
+	
+     				</plugin>
+    			</sensor>
+		</gazebo>
+
+
+		<!-- Hokuyo Laser -->
+		<link name="hokuyo2_link">
+			<collision>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+			        <geometry>
+			        	<box size="0.1 0.1 0.1"/>
+      				</geometry>
+			</collision>
+    			<visual>
+      				<origin xyz="0 0 0" rpy="0 0 0"/>
+      				<geometry>
+        				<mesh filename="model://hokuyo/meshes/hokuyo.dae"/>
+      				</geometry>
+    			</visual>
+    			<inertial>
+      				<mass value="1e-5" />
+      				<origin xyz="0 0 0" rpy="0 0 0"/>
+      				<inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    			</inertial>
+  		</link>	
+		<joint name="hokuyo2_joint" type="fixed">
+			<axis xyz="0 1 0" />
+			<origin xyz="-0.46 -0.265 0.1" rpy="0 0 -2.35619449019"/>
+			<parent link="baseOfCasterWheel_link"/>
+			<child link="hokuyo2_link"/>
+		</joint>  		
+		<gazebo reference="hokuyo2_link">
+    			<sensor type="gpu_ray" name="head_hokuyo_sensor">
+      				<pose>0 0 0 0 0 0</pose>
+      				<visualize>false</visualize>
+      				<update_rate>40</update_rate>
+      				<ray>
+        				<scan>
+          					<horizontal>
+            						<samples>720</samples>
+            						<resolution>1</resolution>
+            						<min_angle>-1.570796</min_angle>
+            						<max_angle>1.570796</max_angle>
+          					</horizontal>
+        				</scan>
+        				<range>
+          					<min>0.10</min>
+          					<max>30.0</max>
+          					<resolution>0.01</resolution>
+        				</range>
+        				<noise>
+          					<type>gaussian</type>
+          					<!-- Noise parameters based on published spec for Hokuyo laser
+               					achieving "+-30mm" accuracy at range < 10m.  A mean of 0.0m and
+               					stddev of 0.01m will put 99.7% of samples within 0.03m of the true
+               					reading. -->
+          					<mean>0.0</mean>
+          					<stddev>0.01</stddev>
+        				</noise>
+      				</ray>
+     				<plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_gpu_laser.so">
+        				<topicName>laser/scan2</topicName>
+        				<frameName>hokuyo2_link</frameName>
+
+      				</plugin>
+    			</sensor>
+  		</gazebo> 
+		<link name="bumper1_link">
+			<collision>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<geometry>
+					<box size="0.015 0.015 0.02"/>
+				</geometry>
+			</collision>
+			<visual>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<geometry>
+					<box size="0.1 0.1 0.05"/>
+				</geometry>			
+			</visual>
+			<inertial>
+				<mass value="1e-5" />
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+			</inertial>
+		</link>
+		<!--   Bumper joint  -->
+		<joint name="bumper1_joint" type="fixed">
+			<origin xyz="0.50 0 -0.05" rpy="0 1.57 0" />
+			<axis xyz="0 1 0" />
+			<parent link="baseOfCasterWheel_link"/>
+			<child link="bumper1_link"/>
+		</joint>  
+		<gazebo reference="bumper1_link">
+			<material>Gazebo/Grey</material>
+			<sensor name="bumper1" type="contact">
+				<always_on>true</always_on>
+				<contact>
+					<collision>bumper1_link_collision</collision>
+				</contact>
+				<plugin name="bumper1_plugin" filename="libgazebo_ros_bumper.so">
+					<bumperTopicName>bumper1</bumperTopicName>
+					<updateRate>10</updateRate>
+					<frameName>agv2/bumper1_link</frameName>
+				</plugin>
+			</sensor>
+		</gazebo>
+		<link name="bumper2_link">
+			<collision>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<geometry>
+					<box size="0.1 0.3 0.05"/>
+				</geometry>
+			</collision>
+			<visual>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<geometry>
+					<box size="0.1 0.3 0.05"/>
+				</geometry>			
+			</visual>
+			<inertial>
+				<mass value="1e-5" />
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+			</inertial>
+		</link>
+		<!--   Bumper joint  -->
+		<joint name="bumper2_joint" type="fixed">
+			<origin xyz="0 0.3 -0.05" rpy="0 1.57 1.57" />
+			<axis xyz="0 1 0" />
+			<parent link="baseOfCasterWheel_link"/>
+			<child link="bumper2_link"/>
+		</joint>  
+		<gazebo reference="bumper2_link">
+			<material>Gazebo/Grey</material>
+			<sensor name="bumper2" type="contact">
+				<always_on>true</always_on>
+				<contact>
+					<collision>bumper2_link_collision</collision>
+				</contact>
+				<plugin name="bumper2_plugin" filename="libgazebo_ros_bumper.so">
+					<bumperTopicName>bumper2</bumperTopicName>
+					<updateRate>10</updateRate>
+					<frameName>agv2/bumper2_link</frameName>
+				</plugin>
+			</sensor>
+		</gazebo>		
+		<link name="bumper3_link">
+			<collision>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<geometry>
+					<box size="0.1 0.1 0.05"/>
+				</geometry>
+			</collision>
+			<visual>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<geometry>
+					<box size="0.1 0.1 0.05"/>
+				</geometry>			
+			</visual>
+			<inertial>
+				<mass value="1e-5" />
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+			</inertial>
+		</link>
+		<!--   Bumper joint  -->
+		<joint name="bumper3_joint" type="fixed">
+			<origin xyz="-0.50 0 -0.05" rpy="0 -1.57 0" />
+			<axis xyz="0 1 0" />
+			<parent link="baseOfCasterWheel_link"/>
+			<child link="bumper3_link"/>
+		</joint>  
+		<gazebo reference="bumper3_link">
+			<material>Gazebo/Grey</material>
+			<sensor name="bumper3" type="contact">
+				<always_on>true</always_on>
+				<contact>
+					<collision>bumper3_link_collision</collision>
+				</contact>
+				<plugin name="bumper3_plugin" filename="libgazebo_ros_bumper.so">
+					<bumperTopicName>bumper3</bumperTopicName>
+					<updateRate>10</updateRate>
+					<frameName>agv2/bumper3_link</frameName>
+				</plugin>
+			</sensor>
+		</gazebo>			
+		<link name="bumper4_link">
+			<collision>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<geometry>
+					<box size="0.1 0.3 0.05"/>
+				</geometry>
+			</collision>
+			<visual>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<geometry>
+					<box size="0.1 0.3 0.05"/>
+				</geometry>			
+			</visual>
+			<inertial>
+				<mass value="1e-5" />
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+			</inertial>
+		</link>
+		<!--   Bumper joint  -->
+		<joint name="bumper4_joint" type="fixed">
+			<origin xyz="0 -0.3 -0.05" rpy="0 -1.57 -1.57" />
+			<axis xyz="0 1 0" />
+			<parent link="baseOfCasterWheel_link"/>
+			<child link="bumper4_link"/>
+		</joint>  		
+		<gazebo reference="bumper4_link">
+			<material>Gazebo/Grey</material>
+			<sensor name="bumper4" type="contact">
+				<always_on>true</always_on>
+				<contact>
+					<collision>bumper4_link_collision</collision>
+				</contact>
+				<plugin name="bumper4_plugin" filename="libgazebo_ros_bumper.so">
+					<bumperTopicName>bumper4</bumperTopicName>
+					<updateRate>10</updateRate>
+					<frameName>agv2/bumper4_link</frameName>
+				</plugin>
+			</sensor>
+		</gazebo>			
+		<link name="sonar1_link">
+			<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>				
+				<geometry>
+					<box size="0.01 0.01 0.01"/>
+				</geometry>
+			</collision>
+			<visual>
+			<origin xyz="0 0 0" rpy="0 1.570 0"/>				
+				<geometry>
+					<mesh filename="model://agvcasterwheel_description/meshes/smo13.dae" scale="0.01 0.01 0.01"/>
+				</geometry>
+			</visual>
+			<inertial>
+				<mass value="0.001" />
+				<origin xyz="0 0 0" rpy="0 0 0" />
+				<inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+			</inertial>			
+		</link>				
+		<joint name="sonar1_joint" type="fixed">
+			<origin xyz="0.505 0 0.05" rpy="0 0 0"/>
+			<parent link="baseOfCasterWheel_link"/>
+			<child link="sonar1_link"/>
+			<axis xyz="1 0 0"/>
+		</joint>
+		<gazebo reference="sonar1_link">
+			<material>Gazebo/Blue</material>
+			<sensor type="ray" name="sonar1">
+				<pose>0 0 0 0 0 0</pose>
+				<ray>
+					<scan>
+						<horizontal>
+							<samples>320</samples>
+							<resolution>1</resolution>
+							<min_angle>-0.479965544</min_angle>
+							<max_angle>0.479965544</max_angle>
+						</horizontal>
+					</scan>
+					<range>
+						<min>0.02</min>
+						<max>5.0</max>
+						<resolution>0.01</resolution>
+					</range>
+				</ray>
+				<plugin name="sonar1_plugin" filename="libgazebo_ros_range.so">
+					<topicName>sonar1</topicName>
+					<frameName>agv2/sonar1_link</frameName>
+					<frameId>agv2/sonar1_link</frameId>
+					<radiation>ultrasound</radiation>
+					<fov>0.7</fov>
+					<gaussianNoise>0</gaussianNoise>
+					<updateRate>4</updateRate>
+				</plugin>
+				<always_on>1</always_on>
+				<visualize>false</visualize>
+			</sensor>
+		</gazebo>
+		<link name="sonar2_link">
+			<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>								
+				<geometry>
+					<box size="0.01 0.01 0.01"/>
+				</geometry>
+			</collision>
+			<visual>
+			<origin xyz="0 0 0" rpy="0 1.570 0"/>				
+				<geometry>
+					<mesh filename="model://agvcasterwheel_description/meshes/smo13.dae" scale="0.01 0.01 0.01"/>
+				</geometry>
+			</visual>
+			<inertial>
+				<mass value="0.001" />
+				<origin xyz="0 0 0" rpy="0 0 0" />
+				<inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+			</inertial>			
+		</link>				
+		<joint name="sonar2_joint" type="fixed">
+			<origin xyz="0.50 0.305 0.05" rpy="0 0 0.78539816339"/>
+			<parent link="baseOfCasterWheel_link"/>
+			<child link="sonar2_link"/>
+			<axis xyz="1 0 0"/>
+		</joint>
+		<gazebo reference="sonar2_link">
+			<sensor type="ray" name="sonar2">
+				<pose>0 0 0 0 0 0</pose>
+				<ray>
+					<scan>
+						<horizontal>
+							<samples>320</samples>
+							<resolution>1</resolution>
+							<min_angle>-0.479965544</min_angle>
+							<max_angle>0.479965544</max_angle>
+						</horizontal>
+					</scan>
+					<range>
+						<min>0.02</min>
+						<max>5.0</max>
+						<resolution>0.01</resolution>
+					</range>
+				</ray>
+				<plugin name="sonar2_plugin" filename="libgazebo_ros_range.so">
+					<topicName>sonar2</topicName>
+					<frameName>agv2/sonar2_link</frameName>
+					<frameId>agv2/sonar2_link</frameId>
+					<radiation>ultrasound</radiation>
+					<fov>0.7</fov>
+					<gaussianNoise>0</gaussianNoise>
+					<updateRate>4</updateRate>
+				</plugin>
+				<always_on>1</always_on>
+				<visualize>false</visualize>
+			</sensor>
+		</gazebo>
+		<link name="sonar3_link">
+			<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>								
+				<geometry>
+					<box size="0.01 0.01 0.01"/>
+				</geometry>
+			</collision>
+			<visual>
+			<origin xyz="0 0 0" rpy="0 1.570 0"/>				
+				<geometry>
+					<mesh filename="model://agvcasterwheel_description/meshes/smo13.dae" scale="0.01 0.01 0.01"/>
+				</geometry>
+			</visual>
+			<inertial>
+				<mass value="0.001" />
+				<origin xyz="0 0 0" rpy="0 0 0" />
+				<inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+			</inertial>			
+		</link>				
+		<joint name="sonar3_joint" type="fixed">
+			<origin xyz="0.25 0.305 0.05" rpy="0 0 1.570"/>
+			<parent link="baseOfCasterWheel_link"/>
+			<child link="sonar3_link"/>
+			<axis xyz="1 0 0"/>
+		</joint>		
+		<gazebo reference="sonar3_link">
+			<sensor type="ray" name="sonar3">
+				<pose>0 0 0 0 0 0</pose>
+				<ray>
+					<scan>
+						<horizontal>
+							<samples>320</samples>
+							<resolution>1</resolution>
+							<min_angle>-0.479965544</min_angle>
+							<max_angle>0.479965544</max_angle>
+						</horizontal>
+					</scan>
+					<range>
+						<min>0.02</min>
+						<max>5.0</max>
+						<resolution>0.01</resolution>
+					</range>
+				</ray>
+				<plugin name="sonar3_plugin" filename="libgazebo_ros_range.so">
+					<topicName>sonar3</topicName>
+					<frameName>agv2/sonar3_link</frameName>
+					<frameId>agv2/sonar3_link</frameId>
+					<radiation>ultrasound</radiation>
+					<fov>0.7</fov>
+					<gaussianNoise>0</gaussianNoise>
+					<updateRate>4</updateRate>
+				</plugin>
+				<always_on>1</always_on>
+				<visualize>false</visualize>
+			</sensor>
+		</gazebo>		
+		<link name="sonar4_link">
+			<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>								
+				<geometry>
+					<box size="0.01 0.01 0.01"/>
+				</geometry>
+			</collision>
+			<visual>
+			<origin xyz="0 0 0" rpy="0 1.570 0"/>
+				<geometry>
+					<mesh filename="model://agvcasterwheel_description/meshes/smo13.dae" scale="0.01 0.01 0.01"/>
+				</geometry>
+			</visual>
+			<inertial>
+				<mass value="0.001" />
+				<origin xyz="0 0 0" rpy="0 0 0" />
+				<inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+			</inertial>			
+		</link>				
+		<joint name="sonar4_joint" type="fixed">
+			<origin xyz="-0.25 0.305 0.05" rpy="0 0 1.570"/>
+			<parent link="baseOfCasterWheel_link"/>
+			<child link="sonar4_link"/>
+			<axis xyz="1 0 0"/>
+		</joint>			
+		<gazebo reference="sonar4_link">
+			<sensor type="ray" name="sonar4">
+				<pose>0 0 0 0 0 0</pose>
+				<ray>
+					<scan>
+						<horizontal>
+							<samples>320</samples>
+							<resolution>1</resolution>
+							<min_angle>-0.479965544</min_angle>
+							<max_angle>0.479965544</max_angle>
+						</horizontal>
+					</scan>
+					<range>
+						<min>0.02</min>
+						<max>5.0</max>
+						<resolution>0.01</resolution>
+					</range>
+				</ray>
+				<plugin name="sonar4_plugin" filename="libgazebo_ros_range.so">
+					<topicName>sonar4</topicName>
+					<frameName>agv2/sonar4_link</frameName>
+					<frameId>agv2/sonar4_link</frameId>
+					<radiation>ultrasound</radiation>
+					<fov>0.7</fov>
+					<gaussianNoise>0</gaussianNoise>
+					<updateRate>4</updateRate>
+				</plugin>
+				<always_on>1</always_on>
+				<visualize>false</visualize>
+			</sensor>
+		</gazebo>				
+		<link name="sonar5_link">
+			<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>								
+				<geometry>
+					<box size="0.01 0.01 0.01"/>
+				</geometry>
+			</collision>
+			<visual>
+				<origin xyz="0 0 0" rpy="0 1.570 0"/>					
+				<geometry>
+					<mesh filename="model://agvcasterwheel_description/meshes/smo13.dae" scale="0.01 0.01 0.01"/>
+				</geometry>
+			</visual>
+			<inertial>
+				<mass value="0.001" />
+				<origin xyz="0 0 0" rpy="0 0 0" />
+				<inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+			</inertial>			
+		</link>				
+		<joint name="sonar5_joint" type="fixed">
+			<origin xyz="-0.50 0.305 0.05" rpy="0 0 2.35619449017"/>
+			<parent link="baseOfCasterWheel_link"/>
+			<child link="sonar5_link"/>
+			<axis xyz="1 0 0"/>
+		</joint>		
+		<gazebo reference="sonar5_link">
+			<sensor type="ray" name="sonar5">
+				<pose>0 0 0 0 0 0</pose>
+				<ray>
+					<scan>
+						<horizontal>
+							<samples>320</samples>
+							<resolution>1</resolution>
+							<min_angle>-0.479965544</min_angle>
+							<max_angle>0.479965544</max_angle>
+						</horizontal>
+					</scan>
+					<range>
+						<min>0.02</min>
+						<max>5.0</max>
+						<resolution>0.01</resolution>
+					</range>
+				</ray>
+				<plugin name="sonar5_plugin" filename="libgazebo_ros_range.so">
+					<topicName>sonar5</topicName>
+					<frameName>agv2/sonar5_link</frameName>
+					<frameId>agv2/sonar5_link</frameId>
+					<radiation>ultrasound</radiation>
+					<fov>0.7</fov>
+					<gaussianNoise>0</gaussianNoise>
+					<updateRate>4</updateRate>
+				</plugin>
+				<always_on>1</always_on>
+				<visualize>false</visualize>
+			</sensor>
+		</gazebo>		
+		<link name="sonar6_link">
+			<collision>
+				<origin xyz="0 0 0" rpy="0 0 0"/>								
+				<geometry>
+					<box size="0.01 0.01 0.01"/>
+				</geometry>
+			</collision>
+			<visual>
+				<origin xyz="0 0 0" rpy="0 1.570 0"/>								
+				<geometry>
+					<mesh filename="model://agvcasterwheel_description/meshes/smo13.dae" scale="0.01 0.01 0.01"/>
+				</geometry>
+			</visual>
+			<inertial>
+				<mass value="0.001" />
+				<origin xyz="0 0 0" rpy="0 0 0" />
+				<inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+			</inertial>			
+		</link>				
+		<joint name="sonar6_joint" type="fixed">
+			<origin xyz="-0.505 0 0.05" rpy="0 0 3.14"/>
+			<parent link="baseOfCasterWheel_link"/>
+			<child link="sonar6_link"/>
+			<axis xyz="1 0 0"/>
+		</joint>			
+		<gazebo reference="sonar6_link">
+			<sensor type="ray" name="sonar6">
+				<pose>0 0 0 0 0 0</pose>
+				<ray>
+					<scan>
+						<horizontal>
+							<samples>320</samples>
+							<resolution>1</resolution>
+							<min_angle>-0.479965544</min_angle>
+							<max_angle>0.479965544</max_angle>
+						</horizontal>
+					</scan>
+					<range>
+						<min>0.02</min>
+						<max>5.0</max>
+						<resolution>0.01</resolution>
+					</range>
+				</ray>
+				<plugin name="sonar6_plugin" filename="libgazebo_ros_range.so">
+					<topicName>sonar6</topicName>
+					<frameName>agv2/sonar6_link</frameName>
+					<frameId>agv2/sonar6_link</frameId>
+					<radiation>ultrasound</radiation>
+					<fov>0.7</fov>
+					<gaussianNoise>0</gaussianNoise>
+					<updateRate>4</updateRate>
+				</plugin>
+				<always_on>1</always_on>
+				<visualize>false</visualize>
+			</sensor>
+		</gazebo>	
+		<link name="sonar7_link">
+			<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>								
+				<geometry>
+					<box size="0.01 0.01 0.01"/>
+				</geometry>
+			</collision>
+			<visual>
+				<origin xyz="0 0 0" rpy="0 1.570 0"/>									
+				<geometry>
+					<mesh filename="model://agvcasterwheel_description/meshes/smo13.dae" scale="0.01 0.01 0.01"/>
+				</geometry>
+			</visual>
+			<inertial>
+				<mass value="0.001" />
+				<origin xyz="0 0 0" rpy="0 0 0" />
+				<inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+			</inertial>			
+		</link>				
+		<joint name="sonar7_joint" type="fixed">
+			<origin xyz="-0.50 -0.305 0.05" rpy="0 0 -2.35619449017"/>
+			<parent link="baseOfCasterWheel_link"/>
+			<child link="sonar7_link"/>
+			<axis xyz="1 0 0"/>
+		</joint>	
+		<gazebo reference="sonar7_link">
+			<sensor type="ray" name="sonar7">
+				<pose>0 0 0 0 0 0</pose>
+				<ray>
+					<scan>
+						<horizontal>
+							<samples>320</samples>
+							<resolution>1</resolution>
+							<min_angle>-0.479965544</min_angle>
+							<max_angle>0.479965544</max_angle>
+						</horizontal>
+					</scan>
+					<range>
+						<min>0.02</min>
+						<max>5.0</max>
+						<resolution>0.01</resolution>
+					</range>
+				</ray>
+				<plugin name="sonar7_plugin" filename="libgazebo_ros_range.so">
+					<topicName>sonar7</topicName>
+					<frameName>agv2/sonar7_link</frameName>
+					<frameId>agv2/sonar7_link</frameId>
+					<radiation>ultrasound</radiation>
+					<fov>0.7</fov>
+					<gaussianNoise>0</gaussianNoise>
+					<updateRate>4</updateRate>
+				</plugin>
+				<always_on>1</always_on>
+				<visualize>false</visualize>
+			</sensor>
+		</gazebo>					
+		<link name="sonar8_link">
+			<collision>
+				<origin xyz="0 0 0" rpy="0 0 0"/>								
+				<geometry>
+					<box size="0.01 0.01 0.01"/>
+				</geometry>
+			</collision>
+			<visual>
+				<origin xyz="0 0 0" rpy="0 1.570 0"/>												
+				<geometry>
+					<mesh filename="model://agvcasterwheel_description/meshes/smo13.dae" scale="0.01 0.01 0.01"/>
+				</geometry>
+			</visual>
+			<inertial>
+				<mass value="0.001" />
+				<origin xyz="0 0 0" rpy="0 0 0" />
+				<inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+			</inertial>			
+		</link>				
+		<joint name="sonar8_joint" type="fixed">
+			<origin xyz="-0.25 -0.305 0.05" rpy="0 0 -1.570"/>
+			<parent link="baseOfCasterWheel_link"/>
+			<child link="sonar8_link"/>
+			<axis xyz="1 0 0"/>
+		</joint>	
+		<gazebo reference="sonar8_link">
+			<sensor type="ray" name="sonar8">
+				<pose>0 0 0 0 0 0</pose>
+				<ray>
+					<scan>
+						<horizontal>
+							<samples>320</samples>
+							<resolution>1</resolution>
+							<min_angle>-0.479965544</min_angle>
+							<max_angle>0.479965544</max_angle>
+						</horizontal>
+					</scan>
+					<range>
+						<min>0.02</min>
+						<max>5.0</max>
+						<resolution>0.01</resolution>
+					</range>
+				</ray>
+				<plugin name="sonar8_plugin" filename="libgazebo_ros_range.so">
+					<topicName>sonar8</topicName>
+					<frameName>agv2/sonar8_link</frameName>
+					<frameId>agv2/sonar8_link</frameId>
+					<radiation>ultrasound</radiation>
+					<fov>0.7</fov>
+					<gaussianNoise>0</gaussianNoise>
+					<updateRate>4</updateRate>
+				</plugin>
+				<always_on>1</always_on>
+				<visualize>false</visualize>
+			</sensor>
+		</gazebo>					
+		<link name="sonar9_link">
+			<collision>
+				<origin xyz="0 0 0" rpy="0 0 0"/>								
+				<geometry>
+					<box size="0.01 0.01 0.01"/>
+				</geometry>
+			</collision>
+			<visual>
+				<origin xyz="0 0 0" rpy="0 1.570 0"/>												
+				<geometry>
+					<mesh filename="model://agvcasterwheel_description/meshes/smo13.dae" scale="0.01 0.01 0.01"/>
+				</geometry>
+			</visual>
+			<inertial>
+				<mass value="0.001" />
+				<origin xyz="0 0 0" rpy="0 0 0" />
+				<inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+			</inertial>			
+		</link>				
+		<joint name="sonar9_joint" type="fixed">
+			<origin xyz="0.25 -0.305 0.05" rpy="0 0 -1.570"/>
+			<parent link="baseOfCasterWheel_link"/>
+			<child link="sonar9_link"/>
+			<axis xyz="1 0 0"/>
+		</joint>	
+		<gazebo reference="sonar9_link">
+			<sensor type="ray" name="sonar9">
+				<pose>0 0 0 0 0 0</pose>
+				<ray>
+					<scan>
+						<horizontal>
+							<samples>320</samples>
+							<resolution>1</resolution>
+							<min_angle>-0.479965544</min_angle>
+							<max_angle>0.479965544</max_angle>
+						</horizontal>
+					</scan>
+					<range>
+						<min>0.02</min>
+						<max>5.0</max>
+						<resolution>0.01</resolution>
+					</range>
+				</ray>
+				<plugin name="sonar9_plugin" filename="libgazebo_ros_range.so">
+					<topicName>sonar9</topicName>
+					<frameName>agv2/sonar9_link</frameName>
+					<frameId>agv2/sonar9_link</frameId>
+					<radiation>ultrasound</radiation>
+					<fov>0.7</fov>
+					<gaussianNoise>0</gaussianNoise>
+					<updateRate>4</updateRate>
+				</plugin>
+				<always_on>1</always_on>
+				<visualize>false</visualize>
+			</sensor>
+		</gazebo>		
+		
+		<link name="sonar10_link">
+			<collision>
+				<origin xyz="0 0 0" rpy="0 0 0"/>								
+				<geometry>
+					<box size="0.01 0.01 0.01"/>
+				</geometry>
+			</collision>
+			<visual>
+				<origin xyz="0 0 0" rpy="0 1.570 0"/>												
+				<geometry>
+					<mesh filename="model://agvcasterwheel_description/meshes/smo13.dae" scale="0.01 0.01 0.01"/>
+				</geometry>
+			</visual>
+			<inertial>
+				<mass value="0.001" />
+				<origin xyz="0 0 0" rpy="0 0 0" />
+				<inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+			</inertial>			
+		</link>				
+		<joint name="sonar10_joint" type="fixed">
+			<origin xyz="0.50 -0.305 0.05" rpy="0 0 -0.78539816339"/>
+			<parent link="baseOfCasterWheel_link"/>
+			<child link="sonar10_link"/>
+			<axis xyz="1 0 0"/>
+		</joint>		
+		<gazebo reference="sonar10_link">
+			<sensor type="ray" name="sonar10">
+				<pose>0 0 0 0 0 0</pose>
+				<ray>
+					<scan>
+						<horizontal>
+							<samples>320</samples>
+							<resolution>1</resolution>
+							<min_angle>-0.479965544</min_angle>
+							<max_angle>0.479965544</max_angle>
+						</horizontal>
+					</scan>
+					<range>
+						<min>0.02</min>
+						<max>5.0</max>
+						<resolution>0.01</resolution>
+					</range>
+				</ray>
+				<plugin name="sonar10_plugin" filename="libgazebo_ros_range.so">
+					<topicName>sonar10</topicName>
+					<frameName>agv2/sonar10_link</frameName>
+					<frameId>agv2/sonar10_link</frameId>
+					<radiation>ultrasound</radiation>
+					<fov>0.7</fov>
+					<gaussianNoise>0</gaussianNoise>
+					<updateRate>4</updateRate>
+				</plugin>
+				<always_on>1</always_on>
+				<visualize>false</visualize>
+			</sensor>
+		</gazebo>	
+		
+  	<!--KİNECT -->
+		<link name="camera_link">
+		  <visual>
+			<origin xyz="0.0 0.0 0.004" rpy="0 0 0"/>
+			<geometry>
+			  <mesh filename="model://agvcasterwheel_description/meshes/xtion_pro_camera.dae"/>
+			</geometry>
+		  </visual>
+		  <collision>
+			<origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+			<geometry>
+				<box size="0.0730 0.2760 0.0720"/>
+		        </geometry>
+		  </collision>
+		  <inertial>
+			<mass value="0.170" />
+			<origin xyz="0 0 0" />
+			<inertia ixx="0.001152600" ixy="0.0" ixz="0.0"
+					 iyy="0.000148934" iyz="0.0"
+					 izz="0.001154654" />
+		  </inertial>
+		</link>
+		<joint name="camera_rgb_joint" type="fixed">
+		  <origin xyz="0.0 -0.02 0.0" rpy="0.0 0.0 0.0"/>
+		  <parent link="camera_link"/>
+		  <child link="camera_rgb_frame" />
+		</joint>
+		<gazebo reference="camera_link">
+			<material>Gazebo/FlatBlack</material>
+		</gazebo>
+		<link name="camera_rgb_frame"/>
+		<joint name="camera_rgb_optical_joint" type="fixed">
+		  <origin xyz="0 0 0" rpy="-1.57079632679 0 -1.57079632679" />
+		  <parent link="camera_rgb_frame" />
+		  <child link="camera_rgb_optical_frame" />
+		</joint>
+		<link name="camera_rgb_optical_frame"/>
+		<joint name="camera_joint" type="fixed">
+		  <origin xyz="0.47 0.005 0.13" rpy="0.0 0.0 0.0"/>
+		  <parent link="baseOfCasterWheel_link"/>
+		  <child link="camera_link"/>
+		</joint>
+		<joint name="camera_depth_joint" type="fixed">
+		  <origin xyz="0 -0.040 0" rpy="0 0 0" />
+		  <parent link="camera_link" />
+		  <child link="camera_depth_frame" />
+		</joint>
+		<link name="camera_depth_frame"/>
+		<joint name="camera_depth_optical_joint" type="fixed">
+		  <origin xyz="0 0 0" rpy="-1.57079632679 0 -1.57079632679" />
+		  <parent link="camera_depth_frame" />
+		  <child link="camera_depth_optical_frame" />
+		</joint>
+		<link name="camera_depth_optical_frame"/>
+		 <!--  Asus mount  -->
+		<joint name="mount_asus_xtion_pro_joint" type="fixed">
+		  <origin xyz="0.47 0 0.10" rpy="1.57079632679 0 -1.57079632679"/>
+		  <parent link="baseOfCasterWheel_link"/>
+		  <child link="mount_asus_xtion_pro_link"/>
+		</joint>  
+		<link name="mount_asus_xtion_pro_link">
+		  <visual>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+			  <mesh filename="model://agvcasterwheel_description/meshes/asus_base.dae"/>
+			</geometry>
+			<material name="Black"/>
+		  </visual>  
+		  <collision>
+			<origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+			<geometry>
+			<box size="0.2760 0.0330 0.0120"/>
+		  </geometry>
+		  </collision>
+		  <inertial>
+			<mass value="0.170" />
+			<origin xyz="0 0 0" />
+			<inertia ixx="0.001152600" ixy="0.0" ixz="0.0"
+					 iyy="0.000148934" iyz="0.0"
+					 izz="0.001154654" />
+		  </inertial>
+		</link>
+		<gazebo reference="mount_asus_xtion_pro_link">
+			<material>Gazebo/FlatBlack</material>
+		</gazebo>
+		<gazebo reference="camera_link">  
+		  <sensor type="depth" name="camera">
+			<always_on>true</always_on>
+			<update_rate>20.0</update_rate>
+			<camera>
+			  <horizontal_fov>1.0471975512</horizontal_fov>
+			  <image>
+				<format>R8G8B8</format>
+				<width>640</width>
+				<height>480</height>
+			  </image>
+			  <clip>
+				<near>0.05</near>
+				<far>8.0</far>
+			  </clip>
+			</camera>
+			<plugin name="kinect_camera_controller" filename="libgazebo_ros_openni_kinect.so">
+
+			  <cameraName>camera</cameraName>
+			  <alwaysOn>true</alwaysOn>
+			  <updateRate>10</updateRate>
+			  <imageTopicName>rgb/image_raw</imageTopicName>
+			  <depthImageTopicName>depth/image_raw</depthImageTopicName>
+			  <pointCloudTopicName>depth/points</pointCloudTopicName>
+			  <cameraInfoTopicName>rgb/camera_info</cameraInfoTopicName>
+			  <depthImageCameraInfoTopicName>depth/camera_info</depthImageCameraInfoTopicName>
+			  <frameName>camera_depth_optical_frame</frameName>
+			  <baseline>0.1</baseline>
+			  <pointCloudCutoff>0.4</pointCloudCutoff>
+	 		  <distortionK1>0.00000001</distortionK1>
+			  <distortionK2>0.00000001</distortionK2>
+			  <distortionK3>0.00000001</distortionK3>
+			  <distortionT1>0.00000001</distortionT1>
+			  <distortionT2>0.00000001</distortionT2>
+			  <CxPrime>0</CxPrime>
+			  <Cx>0</Cx>
+			  <Cy>0</Cy>
+			  <focalLength>0</focalLength>
+			 <hackBaseline>0</hackBaseline>
+			</plugin>
+		  </sensor>
+		</gazebo>		-
+		<gazebo>
+		  <plugin name="agv2_differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+				<alwaysOn>true</alwaysOn>
+				<updateRate>10.0</updateRate> 
+				<robotBaseFrame>baseOfCasterWheel_link</robotBaseFrame>
+				<publishWheelTF>true</publishWheelTF>
+				<publishWheelJointState>true</publishWheelJointState>
+				<wheelAcceleration>1</wheelAcceleration>
+				<leftJoint>leftWheel_joint</leftJoint>
+				<rightJoint>rightWheel_joint</rightJoint>
+				<wheelSeparation>0.33</wheelSeparation>
+				<wheelDiameter>0.17</wheelDiameter>
+				<wheelTorque>20</wheelTorque>
+				<commandTopic>cmd_vel</commandTopic>
+				<odometryTopic>odom</odometryTopic>
+				<odometryFrame>odom_combined</odometryFrame>
+				<robotNamespace>agv2</robotNamespace>
+				<legacyMode>true</legacyMode>
+				<publishTf>1</publishTf>
+				<odometrySource>1</odometrySource>
+			</plugin>
+		  </gazebo>
+</robot>
