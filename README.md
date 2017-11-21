@@ -2,14 +2,14 @@
 Automated Guided Vehicle simulation
 
 Place the files under the catkin_ws / src file. The "workcell" and "workcell_bin" files are model files.
-To be able to add these models to the world easily add this comment to bashrc file.
+To be able to add these models to the world easily add this command to bashrc file.
 #### $ export GAZEBO_MODEL_PATH=/home/[kullanıcı adınız]/catkin_ws/src 
 To run the world, 
 #### $ cd ~/catkin_ws
 #### $ catkin_make
 #### $ source catkin_ws/devel/setup.bash
 #### $ roslaunch agvcasterwheel_gazebo agvcasterwheel.launch 
-write this comments to terminal.
+write this commands to terminal.
 
 Ariac environment is using in this simulation there are three AGV 's on this simulation called agv1, agv2 and agv3.
 Each topic starts with robots name.(/agv1/sonar1)
