@@ -23,4 +23,4 @@ Sonar sensors: ranges are 0-5 meter.
                update rates is 100.(approximately 2 in a second).
                
 Laser sensors: ranges are 0-30 meter.
-               update rate is 40. (approximately 1 in a second)
+               update rate is 40. (approximately 1 in a second).
