@@ -33,7 +33,7 @@ Robot components:
                                           update rate is 40. (approximately 1 in a second).\
                                           
 Environment is taken from Ariac competition environment.               \
-Environment features: \
+Environment features: 
                      width x height = 20.25 x 20.25,\
                      3 automated guided vehicle.\
                      1 m width robot path,\
