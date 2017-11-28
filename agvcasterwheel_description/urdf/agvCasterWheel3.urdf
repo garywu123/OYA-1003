@@ -974,7 +974,7 @@
 					<radiation>ultrasound</radiation>
 					<fov>0.7</fov>
 					<gaussianNoise>0</gaussianNoise>
-					<updateRate>4</updateRate>
+					<updateRate>100</updateRate>
 				</plugin>
 				<always_on>1</always_on>
 				<visualize>false</visualize>
@@ -1030,7 +1030,7 @@
 					<radiation>ultrasound</radiation>
 					<fov>0.7</fov>
 					<gaussianNoise>0</gaussianNoise>
-					<updateRate>4</updateRate>
+					<updateRate>100</updateRate>
 				</plugin>
 				<always_on>1</always_on>
 				<visualize>false</visualize>
@@ -1086,7 +1086,7 @@
 					<radiation>ultrasound</radiation>
 					<fov>0.7</fov>
 					<gaussianNoise>0</gaussianNoise>
-					<updateRate>4</updateRate>
+					<updateRate>100</updateRate>
 				</plugin>
 				<always_on>1</always_on>
 				<visualize>false</visualize>
@@ -1142,7 +1142,7 @@
 					<radiation>ultrasound</radiation>
 					<fov>0.7</fov>
 					<gaussianNoise>0</gaussianNoise>
-					<updateRate>4</updateRate>
+					<updateRate>100</updateRate>
 				</plugin>
 				<always_on>1</always_on>
 				<visualize>false</visualize>
@@ -1198,7 +1198,7 @@
 					<radiation>ultrasound</radiation>
 					<fov>0.7</fov>
 					<gaussianNoise>0</gaussianNoise>
-					<updateRate>4</updateRate>
+					<updateRate>100</updateRate>
 				</plugin>
 				<always_on>1</always_on>
 				<visualize>false</visualize>
@@ -1254,7 +1254,7 @@
 					<radiation>ultrasound</radiation>
 					<fov>0.7</fov>
 					<gaussianNoise>0</gaussianNoise>
-					<updateRate>4</updateRate>
+					<updateRate>100</updateRate>
 				</plugin>
 				<always_on>1</always_on>
 				<visualize>false</visualize>
@@ -1310,7 +1310,7 @@
 					<radiation>ultrasound</radiation>
 					<fov>0.7</fov>
 					<gaussianNoise>0</gaussianNoise>
-					<updateRate>4</updateRate>
+					<updateRate>100</updateRate>
 				</plugin>
 				<always_on>1</always_on>
 				<visualize>false</visualize>
@@ -1366,7 +1366,7 @@
 					<radiation>ultrasound</radiation>
 					<fov>0.7</fov>
 					<gaussianNoise>0</gaussianNoise>
-					<updateRate>4</updateRate>
+					<updateRate>100</updateRate>
 				</plugin>
 				<always_on>1</always_on>
 				<visualize>false</visualize>
@@ -1422,7 +1422,7 @@
 					<radiation>ultrasound</radiation>
 					<fov>0.7</fov>
 					<gaussianNoise>0</gaussianNoise>
-					<updateRate>4</updateRate>
+					<updateRate>100</updateRate>
 				</plugin>
 				<always_on>1</always_on>
 				<visualize>false</visualize>
@@ -1479,7 +1479,7 @@
 					<radiation>ultrasound</radiation>
 					<fov>0.7</fov>
 					<gaussianNoise>0</gaussianNoise>
-					<updateRate>4</updateRate>
+					<updateRate>100</updateRate>
 				</plugin>
 				<always_on>1</always_on>
 				<visualize>false</visualize>
@@ -1613,7 +1613,7 @@
 			</plugin>
 		  </sensor>
 		</gazebo>	
-			<gazebo>
+		<gazebo>
 		  <plugin name="agv3_differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
 				<alwaysOn>true</alwaysOn>
 				<updateRate>10.0</updateRate> 
@@ -1632,7 +1632,6 @@
 				<robotNamespace>agv3</robotNamespace>
 				<legacyMode>true</legacyMode>
 				<publishTf>1</publishTf>
-				<odometrySource>1</odometrySource>
 			</plugin>
-		  </gazebo>	-
+		  </gazebo>	
 </robot>
