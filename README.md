@@ -18,9 +18,23 @@ If you want to change the starting positions of the robot, change "x","y" parame
 if you want to change the head angle, change "yaw" parameter on the agvcasterwheel.launch file.
 
 ##### You should publish cmd_vel topics of robots in different terminals.
-
-Sonar sensors: ranges are 0-5 meter.
+Robot components:
+1 nase frame,
+4 caster base,
+4 caster,
+2 tire,
+2 wheel,
+4 Bumper sensors,
+10 Sonar sensors: ranges are 0-5 meter.
                update rates is 100.(approximately 2 in a second).
                
-Laser sensors: ranges are 0-30 meter.
+2 Hokuyo Laser sensors: ranges are 0-30 meter.
                update rate is 40. (approximately 1 in a second).
+Environment is taken from Ariac competition environment.               
+Environment features: 
+                      width x height = 20.25 x 20.25,
+                      3 automated guided vehicle.
+                      1 m width robot path,
+                      1.5 m width robot path,
+                      2 m width robot path.
+                      
